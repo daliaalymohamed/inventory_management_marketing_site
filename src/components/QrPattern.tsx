@@ -46,14 +46,14 @@ export function QrPattern({ seed }: { seed: string }) {
 
   return (
     <svg
-      className="qr"
+      className="size-[92px] flex-none rounded-lg"
       viewBox={`-1 -1 ${SIZE + 2} ${SIZE + 2}`}
       aria-hidden="true"
       focusable="false"
     >
-      <rect x="-1" y="-1" width={SIZE + 2} height={SIZE + 2} className="qr-bg" />
+      <rect x="-1" y="-1" width={SIZE + 2} height={SIZE + 2} className="fill-qr-bg" />
       {finders.map(([fx, fy]) => (
-        <g key={`${fx}-${fy}`} className="qr-ink">
+        <g key={`${fx}-${fy}`} className="fill-qr-ink">
           <path
             d={`M${fx} ${fy}h7v7h-7z M${fx + 1} ${fy + 1}v5h5v-5z`}
             fillRule="evenodd"
@@ -62,7 +62,7 @@ export function QrPattern({ seed }: { seed: string }) {
         </g>
       ))}
       {cells.map(([x, y]) => (
-        <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" className="qr-ink" />
+        <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" className="fill-qr-ink" />
       ))}
     </svg>
   );
