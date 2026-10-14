@@ -92,8 +92,8 @@ export default function App() {
               </h1>
               <p className="lead">
                 {site.name} tracks every item you lend out — from the shelf, to the person
-                using it, and back again. Scan a label to see where it is, who has it and
-                everything that happened to it.
+                using it, and back again. Scan a label to see its status, where it belongs, who
+                has it and where it has been.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a className="btn" href={mailtoDemo}>
@@ -121,7 +121,7 @@ export default function App() {
               </div>
               <ItemCard industry={industry} />
               <p className="text-sm text-muted">
-                Example of what a scan shows. Pick an industry above.
+                An example item. Pick an industry above.
               </p>
             </div>
           </div>

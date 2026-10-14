@@ -1,9 +1,21 @@
 /**
  * Page content. Every claim here maps to a feature the product actually has —
  * keep it that way when editing: no invented customers, numbers or certifications.
+ *
+ * The example items mirror the app's real data model:
+ *  - items are assigned to a person (a user account), never to a team;
+ *  - "Category" is the item's tag, which is also the prefix of its QR code
+ *    (`TAG-00000`);
+ *  - the status is one of the item statuses (default: Working, Faulty,
+ *    Needs Maintenance, Expired). Being assigned is shown separately, through
+ *    who the item is currently with;
+ *  - the history holds only assignment events: assigned, reassigned, returned
+ *    (with the status chosen when the return was confirmed).
  */
 
 export type HistoryEntry = { when: string; what: string };
+
+export type StatusColor = 'emerald' | 'red' | 'amber' | 'gray';
 
 export type Industry = {
   id: string;
@@ -13,10 +25,13 @@ export type Industry = {
   item: {
     name: string;
     code: string;
-    category: string;
+    tag: string;
+    serial: string;
     location: string;
     status: string;
-    holder: string;
+    statusColor: StatusColor;
+    /** Full name of the person who has it, or null when it is on the shelf. */
+    assignee: string | null;
     history: HistoryEntry[];
   };
 };
@@ -29,34 +44,38 @@ export const industries: Industry[] = [
     examples: ['Laptops', 'Phones', 'Monitors', 'Access cards'],
     item: {
       name: 'Laptop – 14" ultrabook',
-      code: 'IT-00418',
-      category: 'IT equipment › Laptops',
-      location: 'Head office · IT store',
-      status: 'Assigned',
-      holder: 'Finance team',
+      code: 'LAP-00418',
+      tag: 'LAP',
+      serial: 'SN-5CD24187QX',
+      location: 'IT store – Shelf 2',
+      status: 'Working',
+      statusColor: 'emerald',
+      assignee: 'Sara Ali',
       history: [
-        { when: 'Today', what: 'Assigned to Finance team' },
-        { when: '3 days ago', what: 'Assignment approved' },
-        { when: '2 weeks ago', what: 'Returned in working condition' },
+        { when: 'Today', what: 'Assigned to Sara Ali' },
+        { when: '2 weeks ago', what: 'Returned – Working' },
+        { when: 'Last year', what: 'Assigned to Omar Hassan' },
       ],
     },
   },
   {
     id: 'schools',
     label: 'Schools & universities',
-    pitch: 'Lab equipment, tablets and projectors that move between classrooms and students.',
+    pitch: 'Lab equipment, tablets and projectors that move between classrooms, teachers and staff.',
     examples: ['Microscopes', 'Tablets', 'Projectors', 'Lab kits'],
     item: {
       name: 'Microscope – binocular',
       code: 'LAB-00072',
-      category: 'Science lab › Microscopes',
-      location: 'Biology lab 2 · Cabinet B',
-      status: 'Assigned',
-      holder: 'Year 10 biology',
+      tag: 'LAB',
+      serial: 'MX-2290-0072',
+      location: 'Biology lab 2 – Cabinet B',
+      status: 'Working',
+      statusColor: 'emerald',
+      assignee: 'Lena Novak',
       history: [
-        { when: 'Today', what: 'Assigned to Year 10 biology' },
-        { when: 'Last week', what: 'Returned in working condition' },
-        { when: 'Last month', what: 'Returned after maintenance' },
+        { when: 'Today', what: 'Assigned to Lena Novak' },
+        { when: 'Last month', what: 'Returned – Working' },
+        { when: 'Last term', what: 'Reassigned to Daniel Reyes' },
       ],
     },
   },
@@ -68,33 +87,37 @@ export const industries: Industry[] = [
     item: {
       name: 'Infusion pump',
       code: 'MED-01290',
-      category: 'Medical devices › Pumps',
-      location: 'Ward 4 · Equipment room',
-      status: 'Maintenance',
-      holder: 'Biomedical engineering',
+      tag: 'MED',
+      serial: 'IP-77310-1290',
+      location: 'Ward 4 – Equipment room',
+      status: 'Needs Maintenance',
+      statusColor: 'amber',
+      assignee: null,
       history: [
-        { when: 'Today', what: 'Returned, marked for maintenance' },
-        { when: 'Yesterday', what: 'Return requested by Ward 4' },
-        { when: 'Last week', what: 'Assigned to Ward 4' },
+        { when: 'Today', what: 'Returned – Needs Maintenance' },
+        { when: 'Last week', what: 'Assigned to Mina Park' },
+        { when: 'Last month', what: 'Returned – Working' },
       ],
     },
   },
   {
     id: 'construction',
     label: 'Construction & field work',
-    pitch: 'Tools and machines spread across sites, crews and vans.',
+    pitch: 'Tools and machines spread across sites, workers and vans.',
     examples: ['Power tools', 'Generators', 'Safety gear', 'Measuring kit'],
     item: {
       name: 'Rotary hammer drill',
       code: 'TOOL-02207',
-      category: 'Power tools › Drills',
-      location: 'Main yard · Tool store',
-      status: 'Assigned',
-      holder: 'Site crew B',
+      tag: 'TOOL',
+      serial: 'RH-40-022071',
+      location: 'Main yard – Tool store',
+      status: 'Working',
+      statusColor: 'emerald',
+      assignee: 'Karim Mostafa',
       history: [
-        { when: 'Today', what: 'Reassigned to Site crew B' },
-        { when: 'Monday', what: 'Assigned to Site crew A' },
-        { when: 'Last month', what: 'Purchased from vendor, added to stock' },
+        { when: 'Today', what: 'Reassigned to Karim Mostafa' },
+        { when: 'Monday', what: 'Assigned to Daniel Reyes' },
+        { when: 'Last month', what: 'Returned – Working' },
       ],
     },
   },
@@ -105,15 +128,17 @@ export const industries: Industry[] = [
     examples: ['Cameras', 'Lenses', 'Lighting', 'Audio kits'],
     item: {
       name: 'Cinema camera body',
-      code: 'AV-00315',
-      category: 'Camera › Bodies',
-      location: 'Studio · Kit room',
-      status: 'Available',
-      holder: '—',
+      code: 'CAM-00315',
+      tag: 'CAM',
+      serial: 'CB-6K-00315',
+      location: 'Studio – Kit room',
+      status: 'Working',
+      statusColor: 'emerald',
+      assignee: null,
       history: [
-        { when: 'Today', what: 'Return confirmed, back on the shelf' },
-        { when: 'Last week', what: 'Assigned to Event crew' },
-        { when: 'Last week', what: 'Assignment approved' },
+        { when: 'Today', what: 'Returned – Working' },
+        { when: 'Last week', what: 'Assigned to Omar Hassan' },
+        { when: 'Last month', what: 'Returned – Working' },
       ],
     },
   },
@@ -122,46 +147,46 @@ export const industries: Industry[] = [
 export const steps = [
   {
     title: 'Label it',
-    text: 'Every item gets a QR code. Print the label and stick it on.',
+    text: 'Every item gets its own QR code the moment it is added. Print the label and stick it on.',
   },
   {
     title: 'Hand it out',
-    text: 'Request, approve and assign an item to a person or team in a few clicks.',
+    text: 'Assign the item to a person in a few clicks — straight away, or after an approval if the item needs one.',
   },
   {
     title: 'Get it back',
-    text: 'Request the return, confirm it, and record what condition it came back in.',
+    text: 'Request the return, approve it, and confirm it — recording the condition it came back in.',
   },
   {
     title: 'See everything',
-    text: 'Scan any label to open the item and its full history: who had it, when, and in what state.',
+    text: 'Scan a label with a phone to open the item: its status, location and who has it, with its full assignment history one tap away.',
   },
 ];
 
 export const features = [
   {
     title: 'QR labels',
-    text: 'Generated with every item, ready to print, and scannable with any phone camera.',
+    text: 'Created with every item and ready to print. Scan with any phone camera; staff sign in to see the details.',
   },
   {
     title: 'Approval workflows',
-    text: 'Assignments and returns go through request and approval, so nothing changes hands unrecorded.',
+    text: 'Choose per item whether handing it out needs approval. Returns are requested, approved and confirmed, so nothing changes hands unrecorded.',
   },
   {
     title: 'Full history',
-    text: 'A complete assignment history for every item and across the whole inventory.',
+    text: 'Every assignment, reassignment and return, for each item and across the whole inventory.',
   },
   {
     title: 'Your own statuses',
-    text: 'Working, faulty, in maintenance, expired — or add your own, without any code changes.',
+    text: 'Start with Working, Faulty, Needs Maintenance and Expired. Rename, recolour or add your own, and decide which can be handed out.',
   },
   {
     title: 'Organised your way',
-    text: 'Categories, subcategories, tags, storage locations, vendors and purchase details.',
+    text: 'Categories, subcategories and tags; storage from building to shelf; vendors, serial numbers and purchase dates.',
   },
   {
     title: 'Reports in Excel',
-    text: 'Inventory status, utilisation, assignment history, return turnaround and more, exportable to .xlsx.',
+    text: 'Inventory status, utilisation, outstanding assignments, assignment history, return turnaround, vendors and user activity — all exportable to .xlsx.',
   },
   {
     title: 'Live dashboard',
@@ -172,8 +197,12 @@ export const features = [
     text: 'In-app and email alerts for the events you choose, sent to a role or a specific person.',
   },
   {
+    title: 'Works on phones',
+    text: 'Dedicated mobile screens for scanning, checking items and handling requests on the move.',
+  },
+  {
     title: 'Roles & permissions',
-    text: 'Decide exactly who can view, create, approve or delete — enforced on the server, not just hidden in the screen.',
+    text: 'Decide exactly who can view, create, edit or delete each part of the system — enforced on the server, not just hidden in the screen.',
   },
 ];
 
