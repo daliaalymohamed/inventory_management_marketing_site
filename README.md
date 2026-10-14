@@ -1,5 +1,7 @@
 # KitKeeper marketing site
 
+**Live site:** https://daliaalymohamed.github.io/inventory_management_marketing_site/
+
 The public one-page website for KitKeeper. It is a static React site (Vite +
 TypeScript, styled with Tailwind CSS v4) with no backend and no database,
 published on GitHub Pages.
@@ -35,16 +37,16 @@ If you rename the product, change both `src/config.ts` and `index.html`.
 
 ## Publish on GitHub Pages
 
-1. Create a new **public** repository on GitHub and push this folder to its
-   `main` branch.
-2. In the repository: **Settings → Pages → Build and deployment → Source:
-   GitHub Actions**.
-3. Every push to `main` runs `.github/workflows/deploy.yml`, which builds the
-   site and publishes it. The address appears in the workflow run and in
-   Settings → Pages (by default `https://<user>.github.io/<repo>/`).
+Already set up for this repository. Every push to `main` runs
+`.github/workflows/deploy.yml`, which builds the site and publishes it to the
+live address above, usually within a minute or two.
+
+To set it up again elsewhere: push the folder to a **public** repository, then
+**Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
 ## Custom domain (once bought)
 
 1. Settings → Pages → Custom domain → enter the domain, e.g. `kitkeeper.com`.
 2. At the domain registrar, add the DNS records GitHub shows on that page.
 3. Tick **Enforce HTTPS** once GitHub has issued the certificate.
+4. Update the live-site link at the top of this README.
