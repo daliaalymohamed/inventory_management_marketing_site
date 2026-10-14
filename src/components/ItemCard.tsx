@@ -10,17 +10,18 @@ const badgeStyles: Record<StatusColor, string> = {
 };
 
 /**
- * An illustration of an item in the app: the fields the scan screen shows
- * (status, current assignee, category, serial number, storage), plus the
- * assignment history from the item's page.
+ * An illustration of an item in the app: the fields and labels the scan
+ * screen shows (status, current assignee, category, serial number, storage),
+ * plus the assignment history from the item's page. The real scan screen
+ * shows the item's photo where this card shows its QR label.
  */
 export function ItemCard({ industry }: { industry: Industry }) {
   const { item } = industry;
   const facts = [
-    ['Current assignee', item.assignee ?? 'Unassigned'],
+    ['Current Assignee', item.assignee ?? 'Unassigned'],
     ['Category', item.tag],
-    ['Serial number', item.serial],
-    ['Storage', item.location],
+    ['Serial Number', item.serial],
+    ['Storage Locations', item.location],
   ];
 
   return (
@@ -40,7 +41,7 @@ export function ItemCard({ industry }: { industry: Industry }) {
 
       <dl className="my-4 grid gap-2.5">
         {facts.map(([label, value]) => (
-          <div key={label} className="grid gap-0 min-[421px]:grid-cols-[136px_1fr] min-[421px]:gap-3">
+          <div key={label} className="grid gap-0 min-[421px]:grid-cols-[148px_1fr] min-[421px]:gap-3">
             <dt className="text-sm text-muted">{label}</dt>
             <dd className="min-w-0 font-medium text-heading">{value}</dd>
           </div>

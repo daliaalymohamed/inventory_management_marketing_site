@@ -170,7 +170,7 @@ export const features = [
   },
   {
     title: 'Approval workflows',
-    text: 'Choose per item whether handing it out needs approval. Returns are requested, approved and confirmed, so nothing changes hands unrecorded.',
+    text: 'Choose per item whether handing it out needs approval, and whether it must come back before it can go to someone else. Returns are requested, approved and confirmed, so nothing changes hands unrecorded.',
   },
   {
     title: 'Full history',
@@ -182,11 +182,11 @@ export const features = [
   },
   {
     title: 'Organised your way',
-    text: 'Categories, subcategories and tags; storage from building to shelf; vendors, serial numbers and purchase dates.',
+    text: 'Categories, subcategories and tags; storage from building to shelf; photos, vendors, serial numbers and purchase dates.',
   },
   {
     title: 'Reports in Excel',
-    text: 'Inventory status, utilisation, outstanding assignments, assignment history, return turnaround, vendors and user activity — all exportable to .xlsx.',
+    text: 'Inventory status, utilisation, outstanding assignments, assignment history, return turnaround, vendors and user activity — all exportable to .xlsx, with a one-page PDF breakdown for any row.',
   },
   {
     title: 'Live dashboard',
