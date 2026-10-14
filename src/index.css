@@ -23,8 +23,6 @@
   --warn-soft: #fbecd2;
   --info: #1f5fa8;
   --info-soft: #dce9f8;
-  --qr-ink: #0f1a17;
-  --qr-bg: #ffffff;
   color-scheme: light;
 }
 
@@ -47,8 +45,6 @@
     --warn-soft: #3a2c0c;
     --info: #7cb4ff;
     --info-soft: #14284a;
-    --qr-ink: #0f1a17;
-    --qr-bg: #f2f5f4;
     color-scheme: dark;
   }
 }
@@ -75,8 +71,6 @@
   --color-warn-soft: var(--warn-soft);
   --color-info: var(--info);
   --color-info-soft: var(--info-soft);
-  --color-qr-ink: var(--qr-ink);
-  --color-qr-bg: var(--qr-bg);
 
   --shadow-card: 0 1px 2px rgb(15 26 23 / 0.06), 0 12px 32px rgb(15 26 23 / 0.08);
 }

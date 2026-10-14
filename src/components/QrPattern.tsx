@@ -1,69 +1,36 @@
+import QRCode from 'qrcode';
+import { site } from '../config';
+
+/** Quiet zone in modules, matching the `qrcode` library's default that the app's labels use. */
+const MARGIN = 4;
+
 /**
- * A decorative QR-style pattern for the mock item card. It is not a real,
- * scannable code: the cells come from a seeded pseudo-random generator so each
- * item code always draws the same pattern.
+ * A real, scannable QR code built the same way the app builds its labels: the
+ * `qrcode` library with its default settings (error correction M), encoding
+ * `<app address>/scan/<item code>`, drawn black on white.
  */
+export function QrPattern({ code }: { code: string }) {
+  const url = `${site.exampleScanBaseUrl}/scan/${code}`;
+  const { size, data } = QRCode.create(url).modules;
+  const total = size + MARGIN * 2;
 
-const SIZE = 21;
-
-function seededRandom(seed: string) {
-  let h = 2166136261;
-  for (const ch of seed) {
-    h ^= ch.charCodeAt(0);
-    h = Math.imul(h, 16777619);
-  }
-  return () => {
-    h ^= h << 13;
-    h ^= h >>> 17;
-    h ^= h << 5;
-    return ((h >>> 0) % 1000) / 1000;
-  };
-}
-
-function inFinder(x: number, y: number) {
-  const corners = [
-    [0, 0],
-    [SIZE - 7, 0],
-    [0, SIZE - 7],
-  ];
-  return corners.some(([cx, cy]) => x >= cx && x < cx + 7 && y >= cy && y < cy + 7);
-}
-
-export function QrPattern({ seed }: { seed: string }) {
-  const rand = seededRandom(seed);
-  const cells: [number, number][] = [];
-  for (let y = 0; y < SIZE; y++) {
-    for (let x = 0; x < SIZE; x++) {
-      if (!inFinder(x, y) && rand() > 0.52) cells.push([x, y]);
+  let path = '';
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      if (data[y * size + x]) path += `M${x + MARGIN} ${y + MARGIN}h1v1h-1z`;
     }
   }
 
-  const finders = [
-    [0, 0],
-    [SIZE - 7, 0],
-    [0, SIZE - 7],
-  ];
-
   return (
     <svg
-      className="size-[92px] flex-none rounded-lg"
-      viewBox={`-1 -1 ${SIZE + 2} ${SIZE + 2}`}
-      aria-hidden="true"
-      focusable="false"
+      className="size-28 flex-none rounded-lg border border-line"
+      viewBox={`0 0 ${total} ${total}`}
+      shapeRendering="crispEdges"
+      role="img"
+      aria-label={`QR code for ${code}`}
     >
-      <rect x="-1" y="-1" width={SIZE + 2} height={SIZE + 2} className="fill-qr-bg" />
-      {finders.map(([fx, fy]) => (
-        <g key={`${fx}-${fy}`} className="fill-qr-ink">
-          <path
-            d={`M${fx} ${fy}h7v7h-7z M${fx + 1} ${fy + 1}v5h5v-5z`}
-            fillRule="evenodd"
-          />
-          <rect x={fx + 2} y={fy + 2} width="3" height="3" />
-        </g>
-      ))}
-      {cells.map(([x, y]) => (
-        <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" className="fill-qr-ink" />
-      ))}
+      <rect width={total} height={total} fill="#ffffff" />
+      <path d={path} fill="#000000" />
     </svg>
   );
 }

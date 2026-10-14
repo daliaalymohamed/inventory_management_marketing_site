@@ -7,6 +7,13 @@ export const site = {
   tagline: 'Know where every piece of equipment is, and who has it.',
   contactEmail: 'daliaalymohamed@gmail.com',
   demoSubject: 'Demo request',
+  /**
+   * Base of the scan links in the example QR codes. The app encodes
+   * `<app address>/scan/<item code>` in every label, so the examples do the
+   * same. example.com is reserved for examples and safe to point at; switch it
+   * to a real demo address once one exists.
+   */
+  exampleScanBaseUrl: 'https://inventory.example.com',
 };
 
 export const mailtoDemo = `mailto:${site.contactEmail}?subject=${encodeURIComponent(

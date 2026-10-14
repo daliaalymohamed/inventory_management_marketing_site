@@ -22,7 +22,7 @@ export function ItemCard({ industry }: { industry: Industry }) {
       aria-label={`Example item: ${item.name}`}
     >
       <header className="flex items-center gap-[18px] border-b border-line pb-4">
-        <QrPattern seed={item.code} />
+        <QrPattern code={item.code} />
         <div>
           <p className="mb-0.5 font-mono text-sm text-muted">{item.code}</p>
           <h3 className="mb-2 text-lg font-bold">{item.name}</h3>

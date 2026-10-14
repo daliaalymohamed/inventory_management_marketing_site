@@ -24,7 +24,7 @@ that build locally.
 
 | What | File |
 |---|---|
-| Product name, tagline, contact email | `src/config.ts` |
+| Product name, tagline, contact email, address in the example QR codes | `src/config.ts` |
 | Industries, steps, features, security list | `src/data.ts` |
 | Page layout and section text | `src/App.tsx` |
 | Colours (light and dark) and shared Tailwind classes | `src/index.css` |

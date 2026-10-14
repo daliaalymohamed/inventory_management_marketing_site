@@ -48,7 +48,7 @@ export const industries: Industry[] = [
     examples: ['Microscopes', 'Tablets', 'Projectors', 'Lab kits'],
     item: {
       name: 'Microscope – binocular',
-      code: 'LAB-0072',
+      code: 'LAB-00072',
       category: 'Science lab › Microscopes',
       location: 'Biology lab 2 · Cabinet B',
       status: 'Assigned',
@@ -67,7 +67,7 @@ export const industries: Industry[] = [
     examples: ['Infusion pumps', 'Wheelchairs', 'Monitors', 'Scanners'],
     item: {
       name: 'Infusion pump',
-      code: 'MED-1290',
+      code: 'MED-01290',
       category: 'Medical devices › Pumps',
       location: 'Ward 4 · Equipment room',
       status: 'Maintenance',
@@ -86,7 +86,7 @@ export const industries: Industry[] = [
     examples: ['Power tools', 'Generators', 'Safety gear', 'Measuring kit'],
     item: {
       name: 'Rotary hammer drill',
-      code: 'TL-2207',
+      code: 'TOOL-02207',
       category: 'Power tools › Drills',
       location: 'Main yard · Tool store',
       status: 'Assigned',
@@ -105,7 +105,7 @@ export const industries: Industry[] = [
     examples: ['Cameras', 'Lenses', 'Lighting', 'Audio kits'],
     item: {
       name: 'Cinema camera body',
-      code: 'AV-0315',
+      code: 'AV-00315',
       category: 'Camera › Bodies',
       location: 'Studio · Kit room',
       status: 'Available',
