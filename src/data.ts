@@ -214,3 +214,45 @@ export const security = [
   'An append-only audit log of security and workflow events',
   'Your own name, logo and branding throughout',
 ];
+
+export const faq = [
+  {
+    question: 'Can we host it ourselves, or do you host it?',
+    answer:
+      'Either. You can run it on your own servers with Docker or Node.js and a MongoDB database, or we can host and run it for you.',
+  },
+  {
+    question: 'Who owns our data?',
+    answer:
+      'You do. If you host it, your data stays in your own database and never reaches us. If we host it, your organisation gets its own separate installation and database, not shared with anyone else.',
+  },
+  {
+    question: 'Does it work on phones?',
+    answer:
+      'Yes. It has dedicated mobile screens for scanning labels, checking items, and requesting, approving and returning equipment.',
+  },
+  {
+    question: 'Can it use our Microsoft or Google login?',
+    answer:
+      'Yes. It supports single sign-on with Microsoft Entra ID, Google Workspace, Okta or any standard OpenID Connect provider — one provider per installation.',
+  },
+  {
+    question: 'Can we use our own categories and statuses?',
+    answer:
+      'Yes. Categories, subcategories, tags, storage locations and item statuses are all set up by you, with no code changes.',
+  },
+  {
+    question: 'Can we get our information out?',
+    answer:
+      'Yes. Every report and the audit log can be exported to Excel at any time.',
+  },
+  {
+    question: 'Can it carry our company name and logo?',
+    answer: 'Yes. Your name, logo, tagline and support email are all set in its configuration, with no code changes.',
+  },
+  {
+    question: 'How is it priced?',
+    answer:
+      'It depends on how you want to run it and what you need. Contact us for a quote.',
+  },
+];

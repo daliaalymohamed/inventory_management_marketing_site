@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { mailtoDemo, site } from './config';
-import { features, industries, security, steps } from './data';
+import { faq, features, industries, security, steps } from './data';
 import { ItemCard } from './components/ItemCard';
 
 const currentYear = new Date().getFullYear();
@@ -65,6 +65,7 @@ export default function App() {
                 ['#industries', "Who it's for"],
                 ['#features', 'Features'],
                 ['#security', 'Security'],
+                ['#faq', 'FAQ'],
               ].map(([href, label]) => (
                 <li key={href}>
                   <a className="font-medium text-text no-underline hover:text-heading" href={href}>
@@ -214,7 +215,29 @@ export default function App() {
           </div>
         </section>
 
-        <section className="py-[88px]" id="contact">
+        <section className="py-[72px]" id="faq">
+          <div className="container-page max-w-[760px]">
+            <h2 className="section-title text-center">Questions buyers ask</h2>
+            <div className="mt-9 grid gap-3">
+              {faq.map((item) => (
+                <details key={item.question} className="panel group px-5 py-4">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-heading [&::-webkit-details-marker]:hidden">
+                    {item.question}
+                    <span
+                      className="text-xl leading-none text-accent transition-transform group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-surface-alt py-[88px]" id="contact">
           <div className="container-page max-w-[760px] text-center">
             <h2 className="section-title">See it with your own equipment</h2>
             <p className="lead">
