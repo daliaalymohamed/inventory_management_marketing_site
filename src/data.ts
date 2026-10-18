@@ -198,7 +198,7 @@ export const features = [
   },
   {
     title: 'Works on phones',
-    text: 'Dedicated mobile screens for scanning, checking items and handling requests on the move.',
+    text: 'Dedicated mobile screens for scanning, checking items and handling requests on the move. Add it to the home screen and it opens like an app, with your own name and icon.',
   },
   {
     title: 'Roles & permissions',
@@ -230,6 +230,11 @@ export const faq = [
     question: 'Does it work on phones?',
     answer:
       'Yes. It has dedicated mobile screens for scanning labels, checking items, and requesting, approving and returning equipment.',
+  },
+  {
+    question: 'Do we need to install an app from an app store?',
+    answer:
+      'No. It is a web app that can be installed straight from the browser: add it to the home screen of a phone, tablet or computer and it opens full-screen like a native app, with your organisation\'s name and icon. It needs an internet connection to work.',
   },
   {
     question: 'Can it use our Microsoft or Google login?',
