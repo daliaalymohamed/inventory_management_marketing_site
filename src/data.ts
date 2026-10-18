@@ -194,7 +194,7 @@ export const features = [
   },
   {
     title: 'Notifications',
-    text: 'In-app and email alerts for the events you choose, sent to a role or a specific person.',
+    text: 'In-app, email and phone alerts for the events you choose, sent to a role or a specific person. Get notified on your phone when something needs your approval, even with the app closed.',
   },
   {
     title: 'Works on phones',
@@ -235,6 +235,11 @@ export const faq = [
     question: 'Do we need to install an app from an app store?',
     answer:
       'No. It is a web app that can be installed straight from the browser: add it to the home screen of a phone, tablet or computer and it opens full-screen like a native app, with your organisation\'s name and icon. It needs an internet connection to work.',
+  },
+  {
+    question: 'Will we get notified on our phones?',
+    answer:
+      'Yes. Each person can turn on notifications for their phone or computer, so a request waiting for their approval reaches them even when the app is closed. The notification only says what kind of event happened; the details stay in the app, behind a sign-in. On iPhone and iPad, add the app to the home screen first.',
   },
   {
     question: 'Can it use our Microsoft or Google login?',
