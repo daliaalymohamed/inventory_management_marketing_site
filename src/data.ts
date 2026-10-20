@@ -261,7 +261,7 @@ export const faq = [
   {
     question: 'Can we host it ourselves, or do you host it?',
     answer:
-      'Either. You can run it on your own servers with Docker or Node.js and a MongoDB database, or we can host and run it for you.',
+      'Either. You can run it yourself with a MongoDB database, on your own servers (Docker or Node.js) or on a cloud platform such as Vercel, or we can host and run it for you.',
   },
   {
     question: 'Who owns our data?',
