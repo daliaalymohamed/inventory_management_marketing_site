@@ -14,6 +14,8 @@ export const site = {
    * to a real demo address once one exists.
    */
   exampleScanBaseUrl: 'https://inventory.example.com',
+  /** YouTube id of the demo video (youtu.be/<id>). */
+  demoVideoId: 'WO5dKLgwqD4',
 };
 
 export const mailtoDemo = `mailto:${site.contactEmail}?subject=${encodeURIComponent(

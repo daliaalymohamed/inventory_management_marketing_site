@@ -163,6 +163,48 @@ export const steps = [
   },
 ];
 
+/**
+ * Screenshots from a demo copy of the app (made-up data only), in public/screenshots.
+ * width and height are the real file sizes, so the page doesn't jump while they load.
+ */
+export const screenshots = [
+  {
+    src: 'screenshots/dashboard.webp',
+    width: 1600,
+    height: 796,
+    alt: 'The dashboard: item totals, items assigned and available, pending requests and a breakdown by status.',
+    caption: 'The dashboard shows what you have, what is out and what needs attention.',
+  },
+  {
+    src: 'screenshots/item-page.webp',
+    width: 1600,
+    height: 753,
+    alt: "An item's page for a Dell Latitude 5440 laptop, with its status, category, vendor details and QR code.",
+    caption: 'Every item has its own page, with its status, details and QR code.',
+  },
+  {
+    src: 'screenshots/notification.webp',
+    width: 1600,
+    height: 803,
+    alt: 'A notification telling an employee: You have been assigned "Dell Latitude 5440".',
+    caption: 'People are notified as soon as an item is assigned to them.',
+  },
+  {
+    src: 'screenshots/history.webp',
+    width: 1223,
+    height: 578,
+    alt: "The item's assignment history: assigned to Jane Doe by an admin, then returned in working condition.",
+    caption: 'The full history: who had it, who handed it out, and how it came back.',
+  },
+  {
+    src: 'screenshots/qr-label.webp',
+    width: 598,
+    height: 705,
+    alt: 'A printable QR label showing the item code DELL_DS-00001 and the item name.',
+    caption: 'A printable QR label for every item.',
+  },
+];
+
 export const features = [
   {
     title: 'QR labels',

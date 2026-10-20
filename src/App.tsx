@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { mailtoDemo, site } from './config';
-import { faq, features, industries, security, steps } from './data';
+import { faq, features, industries, screenshots, security, steps } from './data';
 import { ItemCard } from './components/ItemCard';
 
 const currentYear = new Date().getFullYear();
@@ -61,6 +61,7 @@ export default function App() {
           <nav aria-label="Main" className="ml-auto">
             <ul className="hidden gap-6 lg:flex">
               {[
+                ['#demo', 'Demo'],
                 ['#how', 'How it works'],
                 ['#industries', "Who it's for"],
                 ['#features', 'Features'],
@@ -100,8 +101,8 @@ export default function App() {
                 <a className="btn" href={mailtoDemo}>
                   Book a demo
                 </a>
-                <a className="btn btn-ghost" href="#how">
-                  See how it works
+                <a className="btn btn-ghost" href="#demo">
+                  Watch the demo
                 </a>
               </div>
             </div>
@@ -136,6 +137,57 @@ export default function App() {
               when they remember is never right when you need it — and the item you're looking
               for is always the one that isn't on it.
             </p>
+          </div>
+        </section>
+
+        <section className="bg-surface-alt py-[72px]" id="demo">
+          <div className="container-page">
+            <h2 className="section-title text-center">See it in action</h2>
+            <p className="lead mx-auto max-w-[760px] text-center">
+              Sign in, add an item, hand it out and get it back, in under four minutes.
+            </p>
+            <div className="mx-auto mt-9 aspect-video max-w-[960px] overflow-hidden rounded-xl border border-line bg-heading shadow-card">
+              <iframe
+                className="size-full"
+                src={`https://www.youtube-nocookie.com/embed/${site.demoVideoId}?rel=0`}
+                title={`${site.name} demo video`}
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+
+            <h3 className="mt-16 text-center text-2xl font-bold">A look inside</h3>
+            <ul className="mt-8 grid items-start gap-6 md:grid-cols-2">
+              {screenshots.map((shot, index) => (
+                <li
+                  key={shot.src}
+                  className={
+                    index === 0
+                      ? 'md:col-span-2'
+                      : shot.height > shot.width
+                        ? 'md:max-w-[340px] md:justify-self-center'
+                        : ''
+                  }
+                >
+                  <figure>
+                    <img
+                      className="w-full rounded-xl border border-line bg-surface shadow-card"
+                      src={shot.src}
+                      width={shot.width}
+                      height={shot.height}
+                      alt={shot.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption className="mt-3 text-center text-sm text-muted">
+                      {shot.caption}
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
