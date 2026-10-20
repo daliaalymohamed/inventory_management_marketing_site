@@ -286,7 +286,7 @@ export const faq = [
   {
     question: 'Can it use our Microsoft or Google login?',
     answer:
-      'Yes. It supports single sign-on with Microsoft Entra ID, Google Workspace, Okta or any standard OpenID Connect provider — one provider per installation.',
+      'Yes. It uses single sign-on through the OpenID Connect standard, which Microsoft Entra ID, Google Workspace, Okta and others support — one provider per installation. Once it is switched on, everyone signs in that way, except one emergency admin account.',
   },
   {
     question: 'Can we use our own categories and statuses?',
