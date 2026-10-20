@@ -252,6 +252,9 @@ export default function App() {
                 Control who can see and change what, and keep a record of every important
                 action. Run it on your own servers, or let us host it for you.
               </p>
+              <a className="btn btn-ghost mt-6" href="security-summary.pdf" download>
+                Download the security summary (PDF)
+              </a>
             </div>
             <ul className="grid gap-3">
               {security.map((line) => (
