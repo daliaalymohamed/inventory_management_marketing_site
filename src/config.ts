@@ -3,7 +3,7 @@
  * site or changing the contact address is a one-file edit.
  */
 export const site = {
-  name: 'KitKeeper',
+  name: 'Asset Tracker',
   tagline: 'Know where every piece of equipment is, and who has it.',
   contactEmail: 'daliaalymohamed@gmail.com',
   demoSubject: 'Demo request',

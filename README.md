@@ -1,8 +1,8 @@
-# KitKeeper marketing site
+# Asset Tracker marketing site
 
 **Live site:** https://daliaalymohamed.github.io/inventory_management_marketing_site/
 
-The public one-page website for KitKeeper. It is a static React site (Vite +
+The public one-page website for Asset Tracker. It is a static React site (Vite +
 TypeScript, styled with Tailwind CSS v4) with no backend and no database,
 published on GitHub Pages.
 
@@ -46,7 +46,7 @@ To set it up again elsewhere: push the folder to a **public** repository, then
 
 ## Custom domain (once bought)
 
-1. Settings → Pages → Custom domain → enter the domain, e.g. `kitkeeper.com`.
+1. Settings → Pages → Custom domain → enter the domain, e.g. `example.com`.
 2. At the domain registrar, add the DNS records GitHub shows on that page.
 3. Tick **Enforce HTTPS** once GitHub has issued the certificate.
 4. Update the live-site link at the top of this README.
